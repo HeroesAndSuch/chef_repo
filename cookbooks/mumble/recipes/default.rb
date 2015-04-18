@@ -9,7 +9,7 @@ include_recipe "apt"
 
 case node['platform']
 when "ubuntu", "debian"
-    apt_repository "mumble"
+    apt_repository "mumble" do
         uri "ppa:mumble/release"
         distribution node['lsb']['codename']
     end
