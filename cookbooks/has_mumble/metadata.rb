@@ -1,4 +1,4 @@
-name             'mumble'
+name             'has_mumble'
 maintainer       'Nate Walck'
 maintainer_email 'nate.walck@gmail.com'
 license          'MIT'

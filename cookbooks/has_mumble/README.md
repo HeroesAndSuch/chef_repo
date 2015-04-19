@@ -1,4 +1,3 @@
 # mumble
 
-TODO: Enter the cookbook description here.
-
+Heroes and Such Mumble Server Config
