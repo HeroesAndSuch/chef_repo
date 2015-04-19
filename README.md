@@ -1,3 +1,6 @@
+See the Wiki for HaS-specific documentation!
+=
+
 Overview
 ========
 
