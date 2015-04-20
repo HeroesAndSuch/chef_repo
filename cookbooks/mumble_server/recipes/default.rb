@@ -56,7 +56,7 @@ template node['mumble_server']['config_file'] do
 end
 
 file node['mumble_server']['pid_file'] do
-  owner 'root'
+  owner node['mumble_server']['user']
   group node['mumble_server']['group']
   mode '00660'
   notifies :restart, service_name
