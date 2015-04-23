@@ -15,7 +15,7 @@ end
 
 user "ut2k4server" do
   action :create
-  manage_home :create
+  manage_home True
 end
 
 remote_file "/usr/local/bin/ut2k4server" do
