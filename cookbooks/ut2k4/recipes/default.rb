@@ -6,7 +6,7 @@
 
 # For Ubuntu 64-bit
 required_packages = ['mailutils', 'postfix', 'unzip', 'tmux', 'libstdc++5:i386']
-required_dirs = ['/home/ut2k4server', '/usr/local/bin/serverfiles']
+required_dirs = ['/home/ut2k4server']
 
 required_packages.each do |pkg_name|
   package pkg_name do
@@ -31,7 +31,7 @@ required_dirs.each do |dir_name|
   end
 end
 
-remote_file "/usr/local/bin/ut2k4server" do
+remote_file "/home/ut2k4server/ut2k4server" do
   owner 'ut2k4server'
   group 'ut2k4server'
   source "http://gameservermanagers.com/dl/ut2k4server"
