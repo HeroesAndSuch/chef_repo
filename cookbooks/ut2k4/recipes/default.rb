@@ -30,10 +30,3 @@ required_dirs.each do |dir_name|
     action :create
   end
 end
-
-remote_file "/home/ut2k4server/ut2k4server" do
-  owner 'ut2k4server'
-  group 'ut2k4server'
-  source "http://gameservermanagers.com/dl/ut2k4server"
-  mode '0770'
-end
