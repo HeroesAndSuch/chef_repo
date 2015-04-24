@@ -30,3 +30,10 @@ required_dirs.each do |dir_name|
     action :create
   end
 end
+
+
+tar_extract 'https://s3.amazonaws.com/gamingsyndicate/ut2004-lnxpatch3369-2.tar.bz2' do
+  target_dir '/home/ut2k4server'
+  creates '/home/ut2k4server/UT2004-Patch'
+  tar_flags [ '--strip-components 1' ]
+end
