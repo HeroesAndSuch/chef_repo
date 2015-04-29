@@ -1,5 +1,6 @@
 # Default attributes for ut2k4 server cookbook
 default[:ut2k4][:server][:dir] = 'server'
+default[:ut2k4][:server][:web] = '/var/www/ut2k4_public'
 default[:ut2k4][:server][:service_user] = 'ut2k4'
 default[:ut2k4][:server][:name] = 'UT2K4 Server'
 default[:ut2k4][:server][:short_name] = 'UT2k4 Server'

@@ -5,10 +5,12 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 # For Ubuntu 64-bit
+include_recipe 'apache2'
 required_packages = ['mailutils', 'postfix', 'unzip', 'tmux', 'libstdc++5:i386']
 server_user = node[:ut2k4][:server][:service_user]
 server_dir = node[:ut2k4][:server][:dir]
-required_dirs = ["/home/#{server_user}", "/home/#{server_user}/#{server_dir}"]
+web_dir = node[:ut2k4][:server][:web]
+required_dirs = ["/home/#{server_user}", "/home/#{server_user}/#{server_dir}", web_dir]
 
 required_packages.each do |pkg_name|
   package pkg_name do
