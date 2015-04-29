@@ -6,7 +6,9 @@
 
 # For Ubuntu 64-bit
 required_packages = ['mailutils', 'postfix', 'unzip', 'tmux', 'libstdc++5:i386']
-required_dirs = ['/home/ut2k4server']
+server_user = node[:ut2k4][:server][:service_user]
+server_dir = node[:ut2k4][:server][:dir]
+required_dirs = ["/home/#{server_user}", "/home/#{server_user}/#{server_dir}"]
 
 required_packages.each do |pkg_name|
   package pkg_name do
@@ -14,26 +16,38 @@ required_packages.each do |pkg_name|
   end
 end
 
-user "ut2k4server" do
+user server_user do
   action :create
   system true
-  home "/home/ut2k4server"
+  home "/home/#{server_user}"
   shell "/bin/bash"
 end
 
-
 required_dirs.each do |dir_name|
   directory dir_name do
-    owner "ut2k4server"
-    group "ut2k4server"
+    owner server_user
+    group server_user
     mode '0755'
     action :create
   end
 end
 
-
-tar_extract 'https://s3.amazonaws.com/gamingsyndicate/ut2004-lnxpatch3369-2.tar.bz2' do
-  target_dir '/home/ut2k4server'
-  creates '/home/ut2k4server/UT2004-Patch'
+tar_extract 'https://s3.amazonaws.com/gamingsyndicate/ut2k4-server.tar.gz' do
+  target_dir "/home/#{server_user}/#{server_dir}"
+  creates "/home/#{server_user}/#{server_dir}/System"
   tar_flags [ '--strip-components 1' ]
+end
+
+template "/home/#{server_user}/#{server_dir}/System/ut2k4-server.ini" do
+  source 'ut2k4-server.ini.erb'
+  owner server_user
+  group server_user
+  mode '0644'
+end
+
+template "/etc/init/ut2k4server.conf" do
+  source 'ut2k4server.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
 end
