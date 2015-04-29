@@ -9,4 +9,6 @@ respawn
 
 reload signal SIGUSR1
 
-exec su -c '/home/<%= node[:ut2k4][:server][:service_user] %>/<%= node[:ut2k4][:server][:dir] %>/System/ucc-bin server <%= node[:ut2k4][:server][:default_map] %>?game=<%= node[:ut2k4][:server][:default_type] %> ini=/home/<%= node[:ut2k4][:server][:service_user] %>/<%= node[:ut2k4][:server][:dir] %>/System/ut2k4-server.ini -nohomedir' <%= node[:ut2k4][:server][:service_user] %>
+chdir /home/<%= node[:ut2k4][:server][:service_user] %>/<%= node[:ut2k4][:server][:dir] %>/System
+
+exec su -c './ucc-bin server <%= node[:ut2k4][:server][:default_map] %>?game=<%= node[:ut2k4][:server][:default_type] %> ini=ut2k4-server.ini -nohomedir' <%= node[:ut2k4][:server][:service_user] %>
