@@ -52,6 +52,7 @@ template "/home/#{server_user}/#{server_dir}/System/ut2k4-server.ini" do
   owner server_user
   group server_user
   mode '0644'
+  notifies :reload, "service[apache2]", :delayed
 end
 
 template "/etc/init/ut2k4server.conf" do
@@ -73,3 +74,8 @@ web_app "ut2k4_public" do
   docroot web_dir
   cookbook 'apache2'
 end
+
+service "ut2k4server" do
+  action [:enable, :start]
+end
+

@@ -275,7 +275,7 @@ MasterServerList=(Address="ut2004master1.epicgames.com",Port=28902)
 MasterServerList=(Address="ut2004master2.epicgames.com",Port=28902)
 
 [IpDrv.HTTPDownload]
-RedirectToURL=
+RedirectToURL=http://&lt;<%= node[:ipaddress] %>&gt;/
 ProxyServerHost=
 ProxyServerPort=3128
 UseCompression=True
