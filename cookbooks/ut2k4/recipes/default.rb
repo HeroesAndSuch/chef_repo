@@ -66,3 +66,10 @@ execute "compress and stage resources" do
   command "find . -regex '.*\\.\\(utx\\|usx\\|ukx\\|int\\|ut2\\|uax\\|u\\)' -exec /home/#{server_user}/tinyuz2 -o #{web_dir} {} \\;"
   creates "#{web_dir}/XWebAdmin.u.uz2"
 end
+
+web_app "ut2k4_public" do
+  server_name node['hostname']
+  server_aliases [node['fqdn']]
+  docroot web_dir
+  cookbook 'apache2'
+end
