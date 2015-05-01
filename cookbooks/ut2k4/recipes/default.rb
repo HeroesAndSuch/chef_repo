@@ -52,7 +52,7 @@ template "/home/#{server_user}/#{server_dir}/System/ut2k4-server.ini" do
   owner server_user
   group server_user
   mode '0644'
-  notifies :reload, "service[apache2]", :delayed
+  notifies :reload, "service[ut2k4server]", :delayed
 end
 
 template "/etc/init/ut2k4server.conf" do
